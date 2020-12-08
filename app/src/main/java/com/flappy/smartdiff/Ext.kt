@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.flappy.smartdiff.constant.Constant
 
-fun Context.showToast(msg: String) {
+fun Context.toast(msg: String) {
     Constant.showToast?.apply {
         setText(msg)
         show()
