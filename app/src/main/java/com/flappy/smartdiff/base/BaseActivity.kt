@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.flappy.smartdiff.toast
 import com.xiasuhuei321.loadingdialog.view.LoadingDialog
 
-abstract class BaseActivity<P : BasePresenter<*, *>> : AppCompatActivity(), BaseView {
+abstract class BaseActivity<P : BasePresenter<*, *>> : AppCompatActivity(), IBaseView {
     val mPresenter: P by lazy { createPreseneter() }
     val loading: LoadingDialog by lazy { LoadingDialog(this) }
     override fun onCreate(savedInstanceState: Bundle?) {

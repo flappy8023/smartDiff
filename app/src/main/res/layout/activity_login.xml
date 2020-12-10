@@ -3,14 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:gravity="center"
     android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
+        android:text="@string/login_title"/>
     <ImageView
+        android:layout_marginTop="@dimen/dp_40"
         android:layout_width="@dimen/dp_60"
         android:layout_height="@dimen/dp_60"
         android:src="@drawable/icon_user"/>
 
     <EditText
         android:id="@+id/et_userName"
-        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_30"
         android:hint="@string/username_tip"
         android:textSize="@dimen/sp_16"
         android:layout_width="match_parent"

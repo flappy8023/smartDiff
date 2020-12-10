@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_tab1"
+        android:icon="@drawable/icon_user"
+        android:title="物料比对" />
+    <item
+        android:id="@+id/item_tab2"
+        android:icon="@drawable/icon_user"
+        android:title="物料设定" />
+    <item
+        android:id="@+id/item_tab3"
+        android:icon="@drawable/icon_user"
+        android:title="系统设定" />
+
+</menu>

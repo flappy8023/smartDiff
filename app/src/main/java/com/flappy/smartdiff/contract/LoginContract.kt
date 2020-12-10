@@ -1,14 +1,14 @@
 package com.flappy.smartdiff.contract
 
-import com.flappy.smartdiff.base.BaseModel
-import com.flappy.smartdiff.base.BaseView
+import com.flappy.smartdiff.base.IBaseModel
+import com.flappy.smartdiff.base.IBaseView
 
 interface LoginContract {
-    interface ILoginView:BaseView{
+    interface ILoginView:IBaseView{
         fun loginSuccess()
         fun loginFail(msg:String)
     }
-    interface ILoginModel:BaseModel{
+    interface ILoginModel:IBaseModel{
         fun login(name:String,pwd:String)
     }
     interface ILoginPresenter{

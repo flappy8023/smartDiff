@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.xiasuhuei321.loadingdialog.view.LoadingDialog
 
-abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), BaseView {
+abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), IBaseView {
     val mPresenter: P by lazy { createPresenter() }
     val loading: LoadingDialog by lazy { LoadingDialog(activity) }
     override fun onCreateView(

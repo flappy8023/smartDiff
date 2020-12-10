@@ -5,4 +5,5 @@
     <string name="login">登录</string>
     <string name="user_does_not_exist">用户不存在</string>
     <string name="wrong_pwd">密码不正确</string>
+    <string name="login_title">智能物料比对系统</string>
 </resources>

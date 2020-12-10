@@ -1,9 +1,9 @@
 package com.flappy.smartdiff.base
 
-abstract class BasePresenter<V : BaseView, M : BaseModel> {
+abstract class BasePresenter<V : IBaseView, M : IBaseModel> {
     var mView: V? = null
     val mModel: M by lazy { createModel() }
-    fun attachView(view: BaseView) {
+    fun attachView(view: IBaseView) {
         mView = view as V
     }
 

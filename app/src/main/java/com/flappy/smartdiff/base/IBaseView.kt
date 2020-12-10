@@ -1,6 +1,6 @@
 package com.flappy.smartdiff.base
 
-interface BaseView {
+interface IBaseView {
     fun showLoading(s: String)
     fun loadSuccess()
     fun loadFail()
