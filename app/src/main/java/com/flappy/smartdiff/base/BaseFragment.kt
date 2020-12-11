@@ -15,14 +15,13 @@ abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), IBaseView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(getLayoutId(), container, false)
         mPresenter.attachView(this)
         initView()
-        return view
+        return getRootView(inflater)
     }
 
+    abstract fun getRootView(inflater: LayoutInflater):View
     abstract fun initView()
-    abstract fun getLayoutId(): Int
     override fun showLoading(s: String) {
         loading.setLoadingText(s).show()
     }

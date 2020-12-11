@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/common_title"
+        android:id="@+id/top"/>
+
+    <TextView
+        android:id="@+id/tip1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_60"
+        android:text="料仓"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/top" />
+
+    <Spinner
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_40"
+        app:layout_constraintBottom_toBottomOf="@id/tip1"
+        app:layout_constraintStart_toEndOf="@id/tip1" />
+
+    <TextView
+        android:id="@+id/tip2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="原物料号码"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toStartOf="@id/tip1"
+        app:layout_constraintTop_toBottomOf="@id/tip1" />
+
+    <TextView
+        android:id="@+id/tv_old_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_40"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toEndOf="@id/tip2"
+        app:layout_constraintTop_toTopOf="@id/tip2" />
+
+    <TextView
+        android:id="@+id/tip3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="原物料名称"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toStartOf="@id/tip2"
+        app:layout_constraintTop_toTopOf="@id/tip2" />
+
+    <TextView
+        android:id="@+id/tv_old_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_40"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toEndOf="@id/tip3"
+        app:layout_constraintTop_toTopOf="@id/tip3" />
+
+    <TextView
+        android:id="@+id/tip4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新物料号码"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginTop="@dimen/dp_40"
+        app:layout_constraintStart_toStartOf="@id/tip3"
+        app:layout_constraintTop_toBottomOf="@id/tip3" />
+    <EditText
+        android:id="@+id/et_new_number"
+        android:layout_width="@dimen/dp_140"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tip4"
+        app:layout_constraintTop_toTopOf="@id/tip4"
+        app:layout_constraintBottom_toBottomOf="@id/tip4"
+        android:layout_marginStart="@dimen/dp_40"
+        android:textSize="@dimen/sp_16"/>
+    <ImageView
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_40"
+        android:src="@drawable/icon_user"
+        app:layout_constraintStart_toEndOf="@id/et_new_number"
+        android:layout_marginStart="@dimen/dp_40"
+        app:layout_constraintTop_toTopOf="@id/tip4"
+        app:layout_constraintBottom_toBottomOf="@id/tip4"/>
+
+    <TextView
+        android:id="@+id/tip5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新物料名称"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginTop="@dimen/dp_40"
+        app:layout_constraintStart_toStartOf="@id/tip4"
+        app:layout_constraintTop_toBottomOf="@id/tip4" />
+    <EditText
+        android:id="@+id/et_new_name"
+        android:layout_width="@dimen/dp_140"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tip5"
+        app:layout_constraintTop_toTopOf="@id/tip5"
+        app:layout_constraintBottom_toBottomOf="@id/tip5"
+        android:layout_marginStart="@dimen/dp_40"
+        android:textSize="@dimen/sp_16"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_40"
+        android:textSize="@dimen/sp_20"
+        android:text="绑定"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
