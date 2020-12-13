@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.flappy.smartdiff.toast
 import com.xiasuhuei321.loadingdialog.view.LoadingDialog
 
 abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), IBaseView {
@@ -16,8 +17,9 @@ abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), IBaseView {
         savedInstanceState: Bundle?
     ): View? {
         mPresenter.attachView(this)
+        val view = getRootView(inflater)
         initView()
-        return getRootView(inflater)
+        return view
     }
 
     abstract fun getRootView(inflater: LayoutInflater):View
@@ -35,7 +37,7 @@ abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), IBaseView {
     }
 
     override fun showToast(msg: String) {
-        showToast(msg)
+        context?.toast(msg)
     }
 
     abstract fun createPresenter(): P

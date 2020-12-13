@@ -1,6 +1,7 @@
 package com.flappy.smartdiff.presenter
 
 import com.flappy.smartdiff.base.BasePresenter
+import com.flappy.smartdiff.bean.DepotBean
 import com.flappy.smartdiff.contract.SettingContract
 import com.flappy.smartdiff.model.SettingModel
 
@@ -15,5 +16,13 @@ class SettingPresenter:BasePresenter<SettingContract.ISettingView,SettingModel>(
     SettingContract.ISettingPresenter {
     override fun createModel(): SettingModel {
         return SettingModel()
+    }
+
+    override fun depot(): DepotBean? {
+        return mModel.depot()
+    }
+
+    override fun saveDepot(depotBean: DepotBean): Boolean {
+        return mModel.saveDepot(depotBean)>0
     }
 }

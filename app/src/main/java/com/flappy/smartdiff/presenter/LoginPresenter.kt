@@ -14,15 +14,20 @@ class LoginPresenter : BasePresenter<LoginContract.ILoginView, LoginModel>(),
     }
 
     override fun login(name: String, pwd: String) {
-        if (Constant.DEFAULT_USERNAME.equals(name) && Constant.DEFAULT_PWD.equals(pwd)) {
-            mView?.loginSuccess()
-        } else if (!checkUserName(name)) {
+        if (!mModel.userExist(name)) {
             mView?.loginFail(MyApplication.mContext.getString(R.string.user_does_not_exist))
-        }else{
-            mView?.loginFail(MyApplication.mContext.getString(R.string.wrong_pwd))
+        } else {
+            Constant.curUser = mModel.getUserByName(name)
+            if (Constant.curUser?.pwd == pwd) {
+                if(name == Constant.DEFAULT_USERNAME){
+                    Constant.isAdmin = true
+                }
+                mView?.loginSuccess()
+            } else {
+                mView?.loginFail(MyApplication.mContext.getString(R.string.wrong_pwd))
+            }
         }
     }
 
-    fun checkUserName(name: String) = Constant.DEFAULT_USERNAME.equals(name)
 
 }

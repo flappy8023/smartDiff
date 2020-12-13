@@ -2,6 +2,7 @@ package com.flappy.smartdiff.contract
 
 import com.flappy.smartdiff.base.IBaseModel
 import com.flappy.smartdiff.base.IBaseView
+import com.flappy.smartdiff.bean.MaterialBean
 
 /**
  * @FileName: DiffSetContract
@@ -12,6 +13,9 @@ import com.flappy.smartdiff.base.IBaseView
  */
 interface DiffSetContract {
     interface IDiffSetView:IBaseView{}
-    interface IDiffSetMoel:IBaseModel{}
+    interface IDiffSetMoel:IBaseModel{
+        fun getMaterials():List<MaterialBean>
+        fun updateMaterial(bean: MaterialBean)
+    }
     interface IDiffSetPreseneter{}
 }

@@ -1,5 +1,9 @@
 package com.flappy.smartdiff.bean
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
+
 /**
  * @FileName: DepotBean
  * @Author: luweiming
@@ -7,17 +11,8 @@ package com.flappy.smartdiff.bean
  * @Description:
  * @Version: 1.0
  */
-data class DepotBean(var nameStart:String,var interfacePostion:String,var count:Int) {
-    val items = mutableListOf<MaterialBean>()
-    init {
-        val start:Int = nameStart.subSequence(nameStart.length-2,nameStart.length).toString().toInt()
-        val pre:String= nameStart.substring(0,nameStart.length-2)
-        for (i in start..count+start){
-            val id = if (i<10) "0"+i else i.toString()
-            val materialBean = MaterialBean(id,"","")
-            items.add(materialBean)
-        }
-    }
+@Entity(tableName = "depot")
+data class DepotBean(@PrimaryKey var userId:Int,var nameStart:String, var interfacePostion:String, var count:Int) {
 
 }
 

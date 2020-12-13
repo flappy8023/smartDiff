@@ -40,9 +40,10 @@
         android:layout_marginStart="@dimen/dp_40"
         />
     <ImageView
+        android:id="@+id/iv_scan"
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"
-        android:src="@drawable/icon_user"
+        android:src="@drawable/icon_scan"
         app:layout_constraintStart_toEndOf="@id/et_number"
         app:layout_constraintTop_toTopOf="@id/et_number"
         android:layout_marginStart="@dimen/dp_40"/>

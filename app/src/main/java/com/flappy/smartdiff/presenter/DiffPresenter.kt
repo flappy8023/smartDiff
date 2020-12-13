@@ -12,11 +12,15 @@ import com.flappy.smartdiff.model.DiffModel
  * @Version: 1.0
  */
 class DiffPresenter:DiffContract.IDiffPresenter,BasePresenter<DiffContract.IDiffView,DiffModel>() {
-    override fun getMaterials() {
-        TODO("Not yet implemented")
+    override fun getMaterials():List<String> {
+        val strings = mutableListOf<String>()
+        mModel.getMaterial().forEach {
+            strings.add(it.id)
+        }
+        return strings
     }
 
     override fun createModel(): DiffModel {
-        TODO("Not yet implemented")
+        return DiffModel()
     }
 }

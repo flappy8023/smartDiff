@@ -28,6 +28,7 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginContract.ILoginView {
     override fun loginSuccess() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     override fun loginFail(msg: String) {

@@ -2,6 +2,7 @@ package com.flappy.smartdiff.contract
 
 import com.flappy.smartdiff.base.IBaseModel
 import com.flappy.smartdiff.base.IBaseView
+import com.flappy.smartdiff.bean.DepotBean
 
 /**
  * @FileName: SettingContract
@@ -12,6 +13,12 @@ import com.flappy.smartdiff.base.IBaseView
  */
 interface SettingContract {
     interface ISettingView:IBaseView{}
-    interface ISettingModel:IBaseModel{}
-    interface ISettingPresenter{}
+    interface ISettingModel:IBaseModel{
+        fun depot():DepotBean?
+        fun saveDepot(depotBean: DepotBean):Long
+    }
+    interface ISettingPresenter{
+        fun depot():DepotBean?
+        fun saveDepot(depotBean: DepotBean):Boolean
+    }
 }
