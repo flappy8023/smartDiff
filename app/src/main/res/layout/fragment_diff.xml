@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/tip1"
+        app:layout_constraintBottom_toBottomOf="@id/tip1"
         android:layout_marginStart="@dimen/dp_40"
         app:layout_constraintTop_toTopOf="@id/tip1"/>
     <TextView
@@ -36,6 +37,7 @@
         android:layout_width="@dimen/dp_80"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/tip2"
+        app:layout_constraintBottom_toBottomOf="@id/tip2"
         app:layout_constraintTop_toTopOf="@id/tip2"
         android:layout_marginStart="@dimen/dp_40"
         />
@@ -46,12 +48,16 @@
         android:src="@drawable/icon_scan"
         app:layout_constraintStart_toEndOf="@id/et_number"
         app:layout_constraintTop_toTopOf="@id/et_number"
+        app:layout_constraintBottom_toBottomOf="@id/et_number"
         android:layout_marginStart="@dimen/dp_40"/>
     <Button
+        android:id="@+id/bt_compare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="比对"
         android:layout_marginStart="@dimen/dp_40"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_bt_blue_round_8dp"
         android:layout_marginEnd="@dimen/dp_40"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -32,11 +32,13 @@ class AccountActivity : BaseActivity<AccountPresenter>(), AccountContract.IAccou
 
             override fun onEdit(user: User) {
                 val dialog = MyDialog(this@AccountActivity,1)
+                dialog.user = user
                 dialog.iSave = object :MyDialog.ISave{
                     override fun onSave(name: String, pwd: String) {
                         user.userName =name
                         user.pwd =pwd
                         mPresenter.update(user)
+                        dialog.dismiss()
                     }
 
                 }
@@ -51,6 +53,7 @@ class AccountActivity : BaseActivity<AccountPresenter>(), AccountContract.IAccou
                 override fun onSave(name: String, pwd: String) {
                     val user = User(name,pwd)
                     mPresenter.addUser(user)
+                    dialog.dismiss()
                 }
             }
             dialog.show()

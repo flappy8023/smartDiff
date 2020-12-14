@@ -27,6 +27,7 @@ class MainActivity : MainContract.IMainView, BaseActivity<MainPreseneter>() {
             add(MaterialsSetFragment())
             add(SystemSettingFragment())
         }
+        binding.viewpager.offscreenPageLimit =3
         binding.viewpager.adapter = MainAdapter(supportFragmentManager, fragments)
         binding.bottomView.setOnNavigationItemSelectedListener {
             return@setOnNavigationItemSelectedListener when (it.itemId) {

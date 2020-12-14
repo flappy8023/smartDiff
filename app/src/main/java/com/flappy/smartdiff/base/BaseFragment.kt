@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.flappy.smartdiff.toast
 import com.xiasuhuei321.loadingdialog.view.LoadingDialog
+import org.greenrobot.eventbus.EventBus
 
 abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), IBaseView {
     val mPresenter: P by lazy { createPresenter() }
@@ -16,12 +17,16 @@ abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), IBaseView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         mPresenter.attachView(this)
         val view = getRootView(inflater)
         initView()
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
     abstract fun getRootView(inflater: LayoutInflater):View
     abstract fun initView()
     override fun showLoading(s: String) {

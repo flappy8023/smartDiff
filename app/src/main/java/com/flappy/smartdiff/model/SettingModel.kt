@@ -21,12 +21,13 @@ class SettingModel:SettingContract.ISettingModel {
 
     override fun saveDepot(depotBean: DepotBean): Long {
         dao.deleteAll()
+        dao.deleteAllMaterials()
         val rowid = dao.insert(depotBean)
         val nameStart = depotBean.nameStart
         val start = nameStart.substring(nameStart.length-2,nameStart.length).toInt()
         val pre = nameStart.substring(0,nameStart.length-2)
         val materials = mutableListOf<MaterialBean>()
-        for (i in start..start+depotBean.count){
+        for (i in start..start+depotBean.count-1){
             val id = if(i<10) "0"+i else i.toString()
             val bean = MaterialBean(pre+id,"","")
             materials.add(bean)

@@ -19,5 +19,6 @@ class MyApplication : Application() {
             val user: User = User(Constant.DEFAULT_USERNAME, Constant.DEFAULT_PWD)
             userDao.insertUser(user)
         }
+        Preference.setContext(mContext)
     }
 }

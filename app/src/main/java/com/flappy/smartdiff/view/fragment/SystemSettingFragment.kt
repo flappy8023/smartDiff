@@ -10,7 +10,11 @@ import com.flappy.smartdiff.constant.Constant
 import com.flappy.smartdiff.contract.SettingContract
 import com.flappy.smartdiff.databinding.FragmentSettingBinding
 import com.flappy.smartdiff.presenter.SettingPresenter
+import com.flappy.smartdiff.toast
 import com.flappy.smartdiff.view.AccountActivity
+import com.flappy.smartdiff.view.LoginActivity
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 /**
  * @FileName: SystemSettingFragment
@@ -19,44 +23,76 @@ import com.flappy.smartdiff.view.AccountActivity
  * @Description:
  * @Version: 1.0
  */
-class SystemSettingFragment:SettingContract.ISettingView,BaseFragment<SettingPresenter>() {
-    private lateinit var binding:FragmentSettingBinding
+class SystemSettingFragment : SettingContract.ISettingView, BaseFragment<SettingPresenter>() {
+    private lateinit var binding: FragmentSettingBinding
     override fun getRootView(inflater: LayoutInflater): View {
         binding = FragmentSettingBinding.inflate(inflater)
         return binding.root
     }
 
     override fun initView() {
+        EventBus.getDefault().register(this)
+
         binding.top.title.text = "系统设定"
-        if(Constant.isAdmin){
+        if (Constant.isAdmin) {
             binding.tvAccount.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.tvAccount.visibility = View.GONE
         }
         val depot = mPresenter.depot()
-        if(null == depot){
+        if (null == depot) {
             binding.etCount.setText("")
             binding.etName.setText("")
-        }else{
+        } else {
             binding.etCount.setText(depot.count.toString())
             binding.etName.setText(depot.nameStart)
             binding.etPosition.setText(depot.interfacePostion)
         }
         binding.btSave.setOnClickListener {
-            val dep:DepotBean = Constant.curUser?.userId?.let { it1 -> DepotBean(it1,binding.etName.text.toString(),binding.etPosition.text.toString(),binding.etCount.text.toString().toInt()) }!!
-            if(mPresenter.saveDepot(dep)){
+            if(binding.etName.text.isEmpty()){
+                activity?.toast("请输入命名规则")
+                return@setOnClickListener
+            }
+            if (binding.etCount.text.isEmpty()){
+                activity?.toast("请输入数量")
+                return@setOnClickListener
+            }
+            val dep: DepotBean = Constant.curUser?.userId?.let { it1 ->
+                DepotBean(
+                    it1,
+                    binding.etName.text.toString(),
+                    binding.etPosition.text.toString(),
+                    binding.etCount.text.toString().toInt()
+                )
+            }!!
+            if (mPresenter.saveDepot(dep)) {
                 showToast("保存成功")
-            }else{
+                EventBus.getDefault().post("2222")
+            } else {
                 showToast("保存失败")
             }
         }
-        binding.tvAccount.setOnClickListener{
-            val intent = Intent(context,AccountActivity::class.java)
+        binding.tvAccount.setOnClickListener {
+            val intent = Intent(context, AccountActivity::class.java)
             context?.startActivity(intent)
         }
+        binding.tvQuit.setOnClickListener {
+            val intent = Intent(activity, LoginActivity::class.java)
+            activity?.startActivity(intent)
+            activity?.finish()
+        }
+    }
+
+    @Subscribe
+    fun fresh(msg: String) {
     }
 
     override fun createPresenter(): SettingPresenter {
         return SettingPresenter()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 }

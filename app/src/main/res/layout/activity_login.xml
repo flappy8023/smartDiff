@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:layout_height="match_parent">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/sp_26"
+        android:layout_marginTop="@dimen/dp_60"
         android:textStyle="bold"
         android:text="@string/login_title"/>
     <ImageView
@@ -44,6 +45,13 @@
         android:background="@drawable/bg_et_blue_round_6dp"
         android:layout_marginTop="@dimen/dp_20"
         android:layout_height="wrap_content"/>
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="记住密码"
+        android:checked="true"
+        android:layout_marginTop="@dimen/dp_20"/>
     <Button
         android:id="@+id/bt_login"
         android:layout_width="match_parent"

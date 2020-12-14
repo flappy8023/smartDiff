@@ -19,9 +19,7 @@ class LoginPresenter : BasePresenter<LoginContract.ILoginView, LoginModel>(),
         } else {
             Constant.curUser = mModel.getUserByName(name)
             if (Constant.curUser?.pwd == pwd) {
-                if(name == Constant.DEFAULT_USERNAME){
-                    Constant.isAdmin = true
-                }
+                Constant.isAdmin = name == Constant.DEFAULT_USERNAME
                 mView?.loginSuccess()
             } else {
                 mView?.loginFail(MyApplication.mContext.getString(R.string.wrong_pwd))

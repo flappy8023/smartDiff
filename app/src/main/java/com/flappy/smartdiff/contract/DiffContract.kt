@@ -19,6 +19,6 @@ interface DiffContract {
         fun getMaterial():List<MaterialBean>?
     }
     interface IDiffPresenter{
-        fun getMaterials():List<String>
+        fun getMaterials():List<MaterialBean>
     }
 }
