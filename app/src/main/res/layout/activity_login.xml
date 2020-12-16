@@ -12,20 +12,19 @@
         android:text="@string/login_title"/>
     <ImageView
         android:layout_marginTop="@dimen/dp_40"
-        android:layout_width="@dimen/dp_60"
-        android:layout_height="@dimen/dp_60"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
         android:src="@drawable/icon_user"/>
 
     <EditText
         android:id="@+id/et_userName"
         android:layout_marginTop="@dimen/dp_30"
         android:hint="@string/username_tip"
-        android:textSize="@dimen/sp_16"
+        android:textSize="@dimen/sp_18"
         android:layout_width="match_parent"
         android:layout_marginStart="@dimen/dp_20"
-        android:padding="@dimen/dp_6"
+        android:padding="@dimen/dp_14"
         android:maxLines="1"
-        android:paddingStart="@dimen/dp_8"
         android:inputType="text"
         android:layout_marginEnd="@dimen/dp_20"
         android:background="@drawable/bg_et_blue_round_6dp"
@@ -39,19 +38,19 @@
         android:hint="@string/pwd_tip"
         android:maxLines="1"
         android:inputType="textPassword"
-        android:paddingStart="@dimen/dp_8"
-        android:padding="@dimen/dp_6"
-        android:textSize="@dimen/sp_16"
+        android:padding="@dimen/dp_14"
+        android:textSize="@dimen/sp_18"
         android:background="@drawable/bg_et_blue_round_6dp"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_40"
         android:layout_height="wrap_content"/>
     <CheckBox
         android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="记住密码"
+        android:textSize="@dimen/sp_16"
         android:checked="true"
-        android:layout_marginTop="@dimen/dp_20"/>
+        android:layout_marginTop="@dimen/dp_40"/>
     <Button
         android:id="@+id/bt_login"
         android:layout_width="match_parent"
@@ -60,7 +59,7 @@
         android:layout_marginStart="@dimen/dp_40"
         android:textSize="@dimen/sp_18"
         android:letterSpacing="1.5"
-        android:padding="@dimen/dp_3"
+        android:padding="@dimen/dp_14"
         android:background="@drawable/bg_bt_blue_round_8dp"
         android:text="@string/login"
         android:textColor="@color/white"

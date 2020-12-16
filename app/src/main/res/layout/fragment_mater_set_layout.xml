@@ -13,10 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_60"
-        android:text="料仓"
-        android:textSize="@dimen/sp_16"
+        android:text="料仓："
+        android:gravity="center"
+        android:drawablePadding="@dimen/dp_10"
+        android:textSize="@dimen/sp_18"
         app:layout_constraintStart_toStartOf="parent"
-
+        android:drawableLeft="@drawable/icon_depot"
         app:layout_constraintTop_toBottomOf="@id/top" />
 
     <Spinner
@@ -24,6 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_40"
+        android:spinnerMode="dialog"
+        android:maxHeight="@dimen/dp_200"
         app:layout_constraintTop_toTopOf="@id/tip1"
         app:layout_constraintBottom_toBottomOf="@id/tip1"
         app:layout_constraintStart_toEndOf="@id/tip1" />
@@ -32,9 +36,12 @@
         android:id="@+id/tip2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_20"
-        android:text="原物料号码"
-        android:textSize="@dimen/sp_16"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dp_40"
+        android:text="原物料号码："
+        android:drawablePadding="@dimen/dp_10"
+        android:drawableLeft="@drawable/icon_number"
+        android:textSize="@dimen/sp_18"
         app:layout_constraintStart_toStartOf="@id/tip1"
         app:layout_constraintTop_toBottomOf="@id/tip1" />
 
@@ -43,7 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_40"
-        android:textSize="@dimen/sp_16"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tip2"
         app:layout_constraintStart_toEndOf="@id/tip2"
         app:layout_constraintTop_toTopOf="@id/tip2" />
 
@@ -51,9 +60,12 @@
         android:id="@+id/tip3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="原物料名称"
-        android:layout_marginTop="@dimen/dp_10"
-        android:textSize="@dimen/sp_16"
+        android:text="原物料名称："
+        android:layout_marginTop="@dimen/dp_20"
+        android:drawableLeft="@drawable/icon_name"
+        android:gravity="center"
+        android:textSize="@dimen/sp_18"
+        android:drawablePadding="@dimen/dp_10"
         app:layout_constraintStart_toStartOf="@id/tip2"
         app:layout_constraintTop_toBottomOf="@id/tip2" />
 
@@ -62,16 +74,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_40"
-        android:textSize="@dimen/sp_16"
+        android:textSize="@dimen/sp_18"
         app:layout_constraintStart_toEndOf="@id/tip3"
+        app:layout_constraintBottom_toBottomOf="@id/tip3"
         app:layout_constraintTop_toTopOf="@id/tip3" />
 
     <TextView
         android:id="@+id/tip4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="新物料号码"
-        android:textSize="@dimen/sp_16"
+        android:text="新物料号码："
+        android:drawablePadding="@dimen/dp_10"
+        android:drawableLeft="@drawable/icon_number_1"
+        android:textSize="@dimen/sp_18"
         android:layout_marginTop="@dimen/dp_40"
         app:layout_constraintStart_toStartOf="@id/tip3"
         app:layout_constraintTop_toBottomOf="@id/tip3" />
@@ -81,6 +96,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/tip4"
         app:layout_constraintTop_toTopOf="@id/tip4"
+        android:maxLines="1"
+        android:padding="@dimen/dp_14"
+        android:background="@drawable/bg_et_blue_round_6dp"
         app:layout_constraintBottom_toBottomOf="@id/tip4"
         android:layout_marginStart="@dimen/dp_40"
         android:textSize="@dimen/sp_16"/>
@@ -99,17 +117,20 @@
         android:layout_height="wrap_content"
         android:text="新物料名称"
         android:textSize="@dimen/sp_16"
+        android:drawableLeft="@drawable/icon_name_1"
         android:layout_marginTop="@dimen/dp_40"
+        android:drawablePadding="@dimen/dp_10"
         app:layout_constraintStart_toStartOf="@id/tip4"
         app:layout_constraintTop_toBottomOf="@id/tip4" />
     <EditText
         android:id="@+id/et_new_name"
         android:layout_width="@dimen/dp_140"
+        android:background="@drawable/bg_et_blue_round_6dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tip5"
+        app:layout_constraintStart_toStartOf="@id/et_new_number"
         app:layout_constraintTop_toTopOf="@id/tip5"
+        android:padding="@dimen/dp_14"
         app:layout_constraintBottom_toBottomOf="@id/tip5"
-        android:layout_marginStart="@dimen/dp_40"
         android:textSize="@dimen/sp_16"/>
     <Button
         android:id="@+id/bt_bind"

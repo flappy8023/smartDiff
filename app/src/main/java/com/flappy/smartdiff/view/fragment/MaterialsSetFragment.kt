@@ -49,7 +49,7 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
         }
         adapter =
             this.context?.let { ArrayAdapter<String>(it, R.layout.simple_spinner_item, strings) }
-        adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        adapter?.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.spinner.adapter = adapter
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {

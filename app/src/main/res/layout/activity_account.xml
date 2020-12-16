@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   tools:context=".view.AccountActivity">
-    <include
-        android:id="@+id/top" layout="@layout/common_title"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:drawableRight="@drawable/icon_add"
-              android:text="添加账号"
-              android:id="@+id/tv_add"
-              android:textSize="@dimen/sp_18"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@id/top"
-              android:layout_marginTop="@dimen/dp_20"
-              app:layout_constraintEnd_toEndOf="parent"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.AccountActivity">
 
-    <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
-                                               android:id="@+id/recyclerview"
-                                               android:layout_height="wrap_content"
-                                               app:layout_constraintTop_toBottomOf="@id/tv_add"
-                                               app:layout_constraintStart_toStartOf="parent"
-                                               app:layout_constraintEnd_toEndOf="parent"/>
+    <include
+        android:id="@+id/top"
+        layout="@layout/common_title" />
+
+    <TextView
+        android:id="@+id/tv_add"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/dp_14"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/bg_blue_round_dash_8dp"
+        android:drawableRight="@drawable/icon_add"
+        android:text="添加账号"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

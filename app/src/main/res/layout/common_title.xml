@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="@dimen/sp_20"
+        android:textSize="@dimen/sp_26"
         android:textStyle="bold"
         android:textColor="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

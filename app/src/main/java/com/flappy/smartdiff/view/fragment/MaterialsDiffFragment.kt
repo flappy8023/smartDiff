@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.flappy.smartdiff.R
 import com.flappy.smartdiff.base.BaseFragment
 import com.flappy.smartdiff.bean.MaterialBean
 import com.flappy.smartdiff.contract.DiffContract
@@ -42,7 +43,7 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
         adapter = this.context?.let {
             ArrayAdapter<String>(
                 it,
-                android.R.layout.simple_spinner_item,
+                R.layout.simple_spinner_item,
                 data
             )
         }

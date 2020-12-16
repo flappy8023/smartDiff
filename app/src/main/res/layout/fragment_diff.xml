@@ -7,49 +7,70 @@
         android:id="@+id/top"/>
     <TextView
         android:id="@+id/tip1"
+        android:drawableLeft="@drawable/icon_depot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="料仓"
+        android:text="料仓："
+        android:gravity="center"
+        android:drawablePadding="@dimen/dp_20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top"
         android:layout_marginStart="@dimen/dp_40"
         android:layout_marginTop="@dimen/dp_60"
-        android:textSize="@dimen/sp_16"/>
+        android:textSize="@dimen/sp_20"/>
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
         app:layout_constraintStart_toEndOf="@id/tip1"
         app:layout_constraintBottom_toBottomOf="@id/tip1"
         android:layout_marginStart="@dimen/dp_40"
+        android:maxHeight="@dimen/dp_200"
         app:layout_constraintTop_toTopOf="@id/tip1"/>
     <TextView
         android:id="@+id/tip2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/sp_16"
-        android:text="物料"
+        android:textSize="@dimen/sp_20"
+        android:text="物料："
+        android:gravity="center"
+        android:drawablePadding="@dimen/dp_20"
+        android:drawableLeft="@drawable/icon_material"
         app:layout_constraintStart_toStartOf="@id/tip1"
         app:layout_constraintTop_toBottomOf="@id/tip1"
-        android:layout_marginTop="@dimen/dp_20"/>
+        android:layout_marginTop="@dimen/dp_60"/>
     <EditText
         android:id="@+id/et_number"
-        android:layout_width="@dimen/dp_80"
+        android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/dp_40"
         android:layout_height="wrap_content"
+        android:padding="@dimen/dp_14"
+        android:maxLines="1"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_et_blue_round_6dp"
         app:layout_constraintStart_toEndOf="@id/tip2"
         app:layout_constraintBottom_toBottomOf="@id/tip2"
         app:layout_constraintTop_toTopOf="@id/tip2"
-        android:layout_marginStart="@dimen/dp_40"
+        android:layout_marginStart="@dimen/dp_20"
         />
-    <ImageView
+    <TextView
+        android:background="@drawable/bg_blue_round_dash_8dp"
         android:id="@+id/iv_scan"
-        android:layout_width="@dimen/dp_40"
-        android:layout_height="@dimen/dp_40"
-        android:src="@drawable/icon_scan"
-        app:layout_constraintStart_toEndOf="@id/et_number"
-        app:layout_constraintTop_toTopOf="@id/et_number"
-        app:layout_constraintBottom_toBottomOf="@id/et_number"
-        android:layout_marginStart="@dimen/dp_40"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_14"
+        android:gravity="center"
+        android:textSize="@dimen/sp_20"
+        android:layout_marginTop="@dimen/dp_40"
+        android:drawableLeft="@drawable/icon_scan"
+        android:text="扫码录入"
+        app:layout_constraintTop_toBottomOf="@id/et_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_80"
+        android:layout_marginEnd="@dimen/dp_80"/>
     <Button
         android:id="@+id/bt_compare"
         android:layout_width="match_parent"
@@ -59,9 +80,11 @@
         android:textColor="@color/white"
         android:background="@drawable/bg_bt_blue_round_8dp"
         android:layout_marginEnd="@dimen/dp_40"
+        android:textSize="@dimen/sp_20"
+        android:padding="@dimen/dp_14"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="@dimen/dp_40"/>
+        android:layout_marginBottom="@dimen/dp_60"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
