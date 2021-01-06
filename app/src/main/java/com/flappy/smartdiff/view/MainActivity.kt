@@ -1,5 +1,6 @@
 package com.flappy.smartdiff.view
 
+import android.content.Intent
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.flappy.smartdiff.MainAdapter
@@ -11,7 +12,6 @@ import com.flappy.smartdiff.presenter.MainPreseneter
 import com.flappy.smartdiff.view.fragment.MaterialsDiffFragment
 import com.flappy.smartdiff.view.fragment.MaterialsSetFragment
 import com.flappy.smartdiff.view.fragment.SystemSettingFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : MainContract.IMainView, BaseActivity<MainPreseneter>() {
     val fragments = mutableListOf<Fragment>()
@@ -22,6 +22,7 @@ class MainActivity : MainContract.IMainView, BaseActivity<MainPreseneter>() {
     }
 
     override fun initView() {
+        initScanerMode()
         fragments.run {
             add(MaterialsDiffFragment());
             add(MaterialsSetFragment())
@@ -49,6 +50,13 @@ class MainActivity : MainContract.IMainView, BaseActivity<MainPreseneter>() {
 
             }
         }
+    }
+    private fun initScanerMode() {
+        //启动广播输出模式
+        val intent = Intent("ACTION_BAR_SCANCFG")
+        intent.putExtra("EXTRA_SCAN_MODE", 3)
+        intent.putExtra("EXTRA_SCAN_AUTOENT", 0)
+        sendBroadcast(intent)
     }
 
     override fun createPreseneter(): MainPreseneter {

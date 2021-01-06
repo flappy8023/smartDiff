@@ -1,6 +1,10 @@
 package com.flappy.smartdiff.view.fragment
 
 import android.R
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
@@ -31,10 +35,27 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
         binding = FragmentMaterSetLayoutBinding.inflate(inflater)
         return binding.root
     }
+    private var mReceiver: BroadcastReceiver? =null
+    protected fun registerScanReceiver() {
+        val mFilter = IntentFilter("nlscan.action.SCANNER_RESULT")
+        mReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                val scanResult_1 = intent.getStringExtra("SCAN_BARCODE1")
+                val scanResult_2 = intent.getStringExtra("SCAN_BARCODE2")
+                val barcodeType = intent.getIntExtra("SCAN_BARCODE_TYPE", -1) // -1:unknown
+                val scanStatus = intent.getStringExtra("SCAN_STATE")
+                if ("ok" == scanStatus) {
+                    binding.etNewNumber.setText(scanResult_1.trim())
+                } else {
 
+                }
+            }
+        }
+        activity!!.registerReceiver(mReceiver, mFilter)
+    }
     override fun initView() {
         EventBus.getDefault().register(this)
-
+        registerScanReceiver()
         binding.top.title.text = "物料设定"
         val materials = mPresenter.getMaterials();
         if (materials.isEmpty()) {
@@ -113,5 +134,6 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
     override fun onDestroy() {
         super.onDestroy()
         EventBus.getDefault().unregister(this)
+        activity?.unregisterReceiver(mReceiver)
     }
 }

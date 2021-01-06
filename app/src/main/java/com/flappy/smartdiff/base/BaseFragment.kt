@@ -42,7 +42,10 @@ abstract class BaseFragment<P : BasePresenter<*, *>> : Fragment(), IBaseView {
     }
 
     override fun showToast(msg: String) {
-        context?.toast(msg)
+        activity!!.runOnUiThread {
+            context?.toast(msg)
+
+        }
     }
 
     abstract fun createPresenter(): P

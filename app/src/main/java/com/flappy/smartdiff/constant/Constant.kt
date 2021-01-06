@@ -13,4 +13,5 @@ object Constant {
     const val KEY_REMERMBER = "remember"
     const val KEY_USERNAME = "username"
     const val KEY_PWD = "pwd"
+    const val KEY_TCP_IP = "TCP_IP"
 }

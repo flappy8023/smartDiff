@@ -1,9 +1,13 @@
 package com.flappy.smartdiff.presenter
 
+import JYDAMEquip
+import com.flappy.smartdiff.Preference
 import com.flappy.smartdiff.base.BasePresenter
 import com.flappy.smartdiff.bean.MaterialBean
+import com.flappy.smartdiff.constant.Constant
 import com.flappy.smartdiff.contract.DiffContract
 import com.flappy.smartdiff.model.DiffModel
+import damtest
 
 /**
  * @FileName: DiffPresenter
@@ -19,6 +23,31 @@ class DiffPresenter:DiffContract.IDiffPresenter,BasePresenter<DiffContract.IDiff
 //            strings.add(it.id)
 //        }
         return mModel.getMaterial()
+    }
+
+    override fun openLock(index:Int) {
+
+        Thread({
+            val equip = JYDAMEquip()
+            val ip by Preference(Constant.KEY_TCP_IP,"192.168.10.1")
+            equip.Init(ip,10000,254)
+            if(!equip.IsConnect()) {
+                equip.BeginConnect()
+                while (!equip.IsConnect()) {
+                    Thread.sleep(200)
+                }
+            }
+            equip.writeSignalDO(index, 1)
+            Thread.sleep(200)
+            val value = equip.readSignalDO(index)
+            if(1==value){
+                mView?.openSucc()
+            }else{
+                mView?.showToast("开启失败")
+            }
+            equip.DisConnect()
+
+        }).start()
     }
 
     override fun createModel(): DiffModel {

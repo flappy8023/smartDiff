@@ -14,11 +14,14 @@ import com.flappy.smartdiff.bean.MaterialBean
 interface DiffContract {
     interface IDiffView:IBaseView{
         fun showMaterials()
+        fun openSucc()
     }
     interface IDiffModel:IBaseModel{
         fun getMaterial():List<MaterialBean>?
     }
     interface IDiffPresenter{
         fun getMaterials():List<MaterialBean>
+        fun openLock(index:Int)
     }
+
 }

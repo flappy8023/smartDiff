@@ -18,16 +18,22 @@
         android:layout_marginStart="@dimen/dp_40"
         android:layout_marginTop="@dimen/dp_60"
         android:textSize="@dimen/sp_20"/>
+    <RelativeLayout
+        app:layout_constraintTop_toTopOf="@id/tip1"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:background="@drawable/bg_et_black_round_4dp"
+        app:layout_constraintStart_toEndOf="@id/tip1"
+        app:layout_constraintBottom_toBottomOf="@id/tip1">
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:spinnerMode="dialog"
-        app:layout_constraintStart_toEndOf="@id/tip1"
-        app:layout_constraintBottom_toBottomOf="@id/tip1"
         android:layout_marginStart="@dimen/dp_40"
-        android:maxHeight="@dimen/dp_200"
-        app:layout_constraintTop_toTopOf="@id/tip1"/>
+        /></RelativeLayout>
     <TextView
         android:id="@+id/tip2"
         android:layout_width="wrap_content"
@@ -49,7 +55,7 @@
         android:maxLines="1"
         android:textSize="@dimen/sp_20"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/bg_et_blue_round_6dp"
+        android:background="@drawable/bg_et_black_round_4dp"
         app:layout_constraintStart_toEndOf="@id/tip2"
         app:layout_constraintBottom_toBottomOf="@id/tip2"
         app:layout_constraintTop_toTopOf="@id/tip2"

@@ -26,7 +26,7 @@
         android:layout_width="@dimen/dp_80"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_10"
-        android:background="@drawable/bg_et_blue_round_6dp"
+        android:background="@drawable/bg_et_black_round_4dp"
         android:maxLines="1"
         android:padding="@dimen/dp_10"
         android:textSize="@dimen/sp_16"
@@ -50,7 +50,7 @@
         android:id="@+id/et_count"
         android:layout_width="@dimen/dp_80"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_et_blue_round_6dp"
+        android:background="@drawable/bg_et_black_round_4dp"
         android:inputType="number"
         android:padding="@dimen/dp_10"
         android:textSize="@dimen/sp_16"
@@ -74,7 +74,7 @@
         android:id="@+id/et_position"
         android:layout_width="@dimen/dp_80"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_et_blue_round_6dp"
+        android:background="@drawable/bg_et_black_round_4dp"
         android:padding="@dimen/dp_10"
         android:textSize="@dimen/sp_16"
         app:layout_constraintBottom_toBottomOf="@id/tip3"
@@ -83,45 +83,68 @@
 
     <Button
         android:id="@+id/bt_save"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
         android:background="@drawable/bg_bt_blue_round_8dp"
         android:text="保存"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/et_position"
-        app:layout_constraintStart_toEndOf="@id/et_name"
-        app:layout_constraintTop_toTopOf="@id/et_name" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tip3"
+        app:layout_constraintTop_toBottomOf="@id/et_position" />
 
     <View
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1"
         android:layout_margin="@dimen/dp_20"
-        android:background="@color/blue_light"
+        android:background="@color/gray"
         app:layout_constraintBottom_toTopOf="@id/tv_account"
-        app:layout_constraintTop_toBottomOf="@id/et_position" />
+        app:layout_constraintTop_toBottomOf="@id/bt_save" />
 
     <TextView
         android:id="@+id/tv_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_60"
         android:drawableLeft="@drawable/icon_account_manage"
+        android:drawableRight="@drawable/arrow_right"
         android:drawablePadding="@dimen/dp_10"
         android:text="账号管理"
-        android:textSize="@dimen/sp_18"
+        android:textSize="@dimen/sp_20"
         app:layout_constraintStart_toStartOf="@id/tip3"
-        app:layout_constraintTop_toBottomOf="@id/tip3" />
+        app:layout_constraintBottom_toTopOf="@id/line1"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_margin="@dimen/dp_20"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toTopOf="@id/tv_quit"
+        app:layout_constraintTop_toBottomOf="@id/tv_account" />
 
     <TextView
         android:id="@+id/tv_quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_40"
         android:drawableLeft="@drawable/icon_logout"
-        android:text="退出账号"
+        android:drawableRight="@drawable/arrow_right"
         android:drawablePadding="@dimen/dp_10"
-        android:textSize="@dimen/sp_18"
+        android:text="退出账号"
+        app:layout_constraintBottom_toTopOf="@id/line2"
+        android:textSize="@dimen/sp_20"
         app:layout_constraintStart_toStartOf="@id/tv_account"
-        app:layout_constraintTop_toBottomOf="@id/tv_account" />
+        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_margin="@dimen/dp_20"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/tv_quit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
