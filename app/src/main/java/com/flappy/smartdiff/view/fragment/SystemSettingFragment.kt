@@ -35,12 +35,20 @@ class SystemSettingFragment : SettingContract.ISettingView, BaseFragment<Setting
 
     override fun initView() {
         EventBus.getDefault().register(this)
-
+        binding.etPosition.setText(tcp_IP)
         binding.top.title.text = "系统设定"
         if (Constant.isAdmin) {
-            binding.tvAccount.visibility = View.VISIBLE
+            binding.btSave.visibility = View.VISIBLE
+            binding.etName.isEnabled = true
+            binding.etCount.isEnabled = true
+            binding.etPosition.isEnabled = true
+            binding.llAccount.visibility = View.VISIBLE
         } else {
-            binding.tvAccount.visibility = View.GONE
+            binding.btSave.visibility = View.GONE
+            binding.etName.isEnabled = false
+            binding.etCount.isEnabled = false
+            binding.etPosition.isEnabled = false
+            binding.llAccount.visibility = View.GONE
         }
         val depot = mPresenter.depot()
         if (null == depot) {
@@ -85,11 +93,11 @@ class SystemSettingFragment : SettingContract.ISettingView, BaseFragment<Setting
                 showToast("保存失败")
             }
         }
-        binding.tvAccount.setOnClickListener {
+        binding.llAccount.setOnClickListener {
             val intent = Intent(context, AccountActivity::class.java)
             context?.startActivity(intent)
         }
-        binding.tvQuit.setOnClickListener {
+        binding.llQuit.setOnClickListener {
             val intent = Intent(activity, LoginActivity::class.java)
             activity?.startActivity(intent)
             activity?.finish()

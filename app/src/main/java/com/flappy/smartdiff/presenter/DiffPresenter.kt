@@ -8,6 +8,7 @@ import com.flappy.smartdiff.constant.Constant
 import com.flappy.smartdiff.contract.DiffContract
 import com.flappy.smartdiff.model.DiffModel
 import damtest
+import net.wimpi.modbus.util.ThreadPool
 
 /**
  * @FileName: DiffPresenter
@@ -28,6 +29,7 @@ class DiffPresenter:DiffContract.IDiffPresenter,BasePresenter<DiffContract.IDiff
     override fun openLock(index:Int) {
 
         Thread({
+            var tryCount = 0
             val equip = JYDAMEquip()
             val ip by Preference(Constant.KEY_TCP_IP,"192.168.10.1")
             equip.Init(ip,10000,254)
@@ -35,16 +37,23 @@ class DiffPresenter:DiffContract.IDiffPresenter,BasePresenter<DiffContract.IDiff
                 equip.BeginConnect()
                 while (!equip.IsConnect()) {
                     Thread.sleep(200)
+                    tryCount++
+                    if(tryCount>1){
+                        mView?.showToast("设备未连接")
+                        return@Thread
+                    }
                 }
             }
             equip.writeSignalDO(index, 1)
-            Thread.sleep(200)
+            Thread.sleep(20)
             val value = equip.readSignalDO(index)
             if(1==value){
                 mView?.openSucc()
             }else{
                 mView?.showToast("开启失败")
             }
+            Thread.sleep(1000)
+            equip.writeSignalDO(index,0)
             equip.DisConnect()
 
         }).start()

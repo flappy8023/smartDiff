@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_80"
         android:drawableLeft="@drawable/icon_depot"
         android:drawablePadding="@dimen/dp_10"
         android:gravity="center"
@@ -48,7 +48,7 @@
         android:drawableLeft="@drawable/icon_number"
         android:drawablePadding="@dimen/dp_10"
         android:gravity="center"
-        android:text="原物料号码："
+        android:text="原物料条码："
         android:textSize="@dimen/sp_18"
         app:layout_constraintStart_toStartOf="@id/tip1"
         app:layout_constraintTop_toBottomOf="@id/tip1" />
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_40"
-        android:textColor="@color/black"
+        android:textColor="@color/black_243"
         android:textSize="@dimen/sp_18"
         app:layout_constraintBottom_toBottomOf="@id/tip2"
         app:layout_constraintStart_toEndOf="@id/tip2"
@@ -82,6 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_40"
+        android:textColor="@color/black_243"
         android:textSize="@dimen/sp_18"
         app:layout_constraintBottom_toBottomOf="@id/tip3"
         app:layout_constraintStart_toEndOf="@id/tip3"
@@ -94,7 +95,7 @@
         android:layout_marginTop="@dimen/dp_40"
         android:drawableLeft="@drawable/icon_number_1"
         android:drawablePadding="@dimen/dp_10"
-        android:text="新物料号码："
+        android:text="新物料条码："
         android:textSize="@dimen/sp_18"
         app:layout_constraintStart_toStartOf="@id/tip3"
         app:layout_constraintTop_toBottomOf="@id/tip3" />
@@ -108,18 +109,9 @@
         android:maxLines="1"
         android:padding="@dimen/dp_14"
         android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/tip4"
         app:layout_constraintStart_toEndOf="@id/tip4"
-        app:layout_constraintTop_toTopOf="@id/tip4" />
-
-    <ImageView
-        android:id="@+id/iv_scan"
-        android:layout_width="@dimen/dp_40"
-        android:layout_height="@dimen/dp_40"
-        android:layout_marginStart="@dimen/dp_10"
-        android:src="@drawable/icon_scan"
-        app:layout_constraintBottom_toBottomOf="@id/tip4"
-        app:layout_constraintStart_toEndOf="@id/et_new_number"
         app:layout_constraintTop_toTopOf="@id/tip4" />
 
     <TextView
@@ -141,6 +133,7 @@
         android:background="@drawable/bg_et_black_round_4dp"
         android:padding="@dimen/dp_14"
         android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/tip5"
         app:layout_constraintStart_toStartOf="@id/et_new_number"
         app:layout_constraintTop_toTopOf="@id/tip5" />
@@ -154,8 +147,10 @@
         android:layout_marginBottom="@dimen/dp_40"
         android:background="@drawable/bg_bt_blue_round_8dp"
         android:text="绑定"
+        android:padding="@dimen/dp_20"
         android:textColor="@color/white"
-        android:textSize="@dimen/sp_20"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_marginTop="@dimen/dp_80"
+        android:textSize="@dimen/sp_24"
+        app:layout_constraintTop_toBottomOf="@id/et_new_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

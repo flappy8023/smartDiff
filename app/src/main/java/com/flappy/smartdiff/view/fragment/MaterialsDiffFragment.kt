@@ -1,5 +1,6 @@
 package com.flappy.smartdiff.view.fragment
 
+import android.app.AlertDialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -33,9 +34,11 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
     var curPosition = 0
     override fun initView() {
         EventBus.getDefault().register(this)
-        registerScanReceiver()
         binding.top.title.text = "物料比对"
         materials.addAll(mPresenter.getMaterials())
+        if (!materials.isEmpty() && materials.size > curPosition) {
+            binding.tvName.setText(materials.get(curPosition).name)
+        }
         if (materials.isEmpty()) {
             data.add("暂未设置")
         } else {
@@ -58,6 +61,9 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
                     if (curPosition != p2) {
                         binding.etNumber.setText("")
                     }
+                if (!materials.isEmpty() && materials.size > p2) {
+                    binding.tvName.setText(materials.get(p2).name)
+                }
                 curPosition = p2
             }
 
@@ -65,19 +71,13 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
             }
 
         }
-        binding.ivScan.setOnClickListener {
-            val intent = Intent("nlscan.action.SCANNER_TRIG")
-            activity!!.sendBroadcast(intent)
-        }
         binding.btCompare.setOnClickListener {
-//            mPresenter.openLock(curPosition)
             if (binding.etNumber.text.isEmpty()) {
                 activity?.toast("请输入号码")
                 return@setOnClickListener
             }
             if (materials.size > curPosition) {
                 if (materials.get(curPosition).number.equals(binding.etNumber.text.toString())) {
-//                    activity?.toast("比对成功")
                     mPresenter.openLock(curPosition)
 
                 } else {
@@ -85,24 +85,6 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
                 }
             }
         }
-    }
-    private var mReceiver:BroadcastReceiver? =null
-    protected fun registerScanReceiver() {
-        val mFilter = IntentFilter("nlscan.action.SCANNER_RESULT")
-        mReceiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                val scanResult_1 = intent.getStringExtra("SCAN_BARCODE1")
-                val scanResult_2 = intent.getStringExtra("SCAN_BARCODE2")
-                val barcodeType = intent.getIntExtra("SCAN_BARCODE_TYPE", -1) // -1:unknown
-                val scanStatus = intent.getStringExtra("SCAN_STATE")
-                if ("ok" == scanStatus) {
-                    binding.etNumber.setText(scanResult_1.trim())
-                } else {
-
-                }
-            }
-        }
-        activity!!.registerReceiver(mReceiver, mFilter)
     }
 
     override fun createPresenter(): DiffPresenter {
@@ -114,10 +96,17 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
 
     override fun openSucc() {
         activity?.runOnUiThread {
-            activity?.toast("开启成功")
+            if (dialog == null)
+                dialog = AlertDialog.Builder(activity).setTitle("提示").setMessage("开启成功")
+                    .setIcon(R.drawable.done).create()
+            dialog?.show()
+            binding.root.postDelayed({
+                dialog?.dismiss()
+            }, 1000)
         }
     }
 
+    private var dialog: AlertDialog? = null
     override fun getRootView(inflater: LayoutInflater): View {
         binding = FragmentDiffBinding.inflate(inflater)
         return binding.root
@@ -130,6 +119,9 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
             data.clear()
             materials.clear()
             materials.addAll(mPresenter.getMaterials())
+            if (!materials.isEmpty() && materials.size > curPosition) {
+                binding.tvName.setText(materials.get(curPosition).name)
+            }
             materials.forEach {
                 data.add(it.id)
             }
@@ -140,7 +132,6 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
     override fun onDestroy() {
         super.onDestroy()
         EventBus.getDefault().unregister(this)
-        activity!!.unregisterReceiver(mReceiver)
     }
 
 }
