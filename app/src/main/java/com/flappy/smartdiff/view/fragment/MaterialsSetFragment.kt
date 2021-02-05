@@ -9,8 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.flappy.smartdiff.Preference
 import com.flappy.smartdiff.base.BaseFragment
 import com.flappy.smartdiff.bean.MaterialBean
+import com.flappy.smartdiff.constant.Constant
 import com.flappy.smartdiff.contract.DiffSetContract
 import com.flappy.smartdiff.databinding.FragmentMaterSetLayoutBinding
 import com.flappy.smartdiff.presenter.DiffSetPresenter
@@ -30,11 +32,16 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
     val strings = mutableListOf<String>()
     var curPosition = 0
     var adapter: ArrayAdapter<String>? = null
+    private var numberStart by Preference(Constant.KEY_NUMBER_START, 0)
+    private var numberEnd by Preference(Constant.KEY_NUMBER_END, 0)
+    private var pihaoStart by Preference(Constant.KEY_PIHAO_START, 0)
+    private var pihaoEnd by Preference(Constant.KEY_PIHAO_END, 0)
     private lateinit var binding: FragmentMaterSetLayoutBinding
     override fun getRootView(inflater: LayoutInflater): View {
         binding = FragmentMaterSetLayoutBinding.inflate(inflater)
         return binding.root
     }
+
     override fun initView() {
         EventBus.getDefault().register(this)
         binding.top.title.text = "物料设定"
@@ -48,6 +55,7 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
             }
             binding.tvOldName.setText(data.get(0).name)
             binding.tvOldNumber.setText(data.get(0).number)
+            binding.tvOldPihao.setText(data.get(0).pihao)
         }
         adapter =
             this.context?.let { ArrayAdapter<String>(it, R.layout.simple_spinner_item, strings) }
@@ -59,6 +67,7 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
                     curPosition = p2
                     binding.tvOldName.setText(data.get(p2).name)
                     binding.tvOldNumber.setText(data.get(p2).number)
+                    binding.tvOldPihao.setText(data.get(p2).pihao)
                 }
             }
 
@@ -68,8 +77,22 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
         }
         binding.btBind.setOnClickListener {
             if (!data.isEmpty()) {
-               data.get(curPosition).number = binding.etNewNumber.text.toString()
+                var number = binding.etNewNumber.text.toString()
+//                if (numberStart <= number.length && numberEnd <= number.length) {
+//                    if (0 != numberEnd && 0 != numberStart) {
+//                        number = number.substring(numberStart-1, numberEnd)
+//                    }
+//                }
+                var pihao = number
+                if (pihaoStart <= number.length && pihaoEnd <= number.length) {
+                    if (0 != pihaoEnd && 0 != pihaoStart) {
+                        pihao = number.substring(pihaoStart-1, pihaoEnd)
+                    }
+                }
+                data.get(curPosition).pihao = pihao
+                data.get(curPosition).number = number
                 data.get(curPosition).name = binding.etNewName.text.toString()
+
                 mPresenter.updateMaterial(data.get(curPosition))
                 binding.tvOldName.text = data.get(curPosition).name
                 binding.tvOldNumber.text = data.get(curPosition).number
@@ -92,12 +115,12 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
             data.clear()
             strings.clear()
             data.addAll(mPresenter.getMaterials())
-            data.forEach{
+            data.forEach {
                 strings.add(it.id)
             }
             adapter?.notifyDataSetChanged()
         }
-        if(msg.equals("2222")){
+        if (msg.equals("2222")) {
             binding.etNewNumber.setText("")
             binding.etNewName.setText("")
             binding.tvOldNumber.setText("")
@@ -105,7 +128,7 @@ class MaterialsSetFragment : DiffSetContract.IDiffSetView, BaseFragment<DiffSetP
             data.clear()
             strings.clear()
             data.addAll(mPresenter.getMaterials())
-            data.forEach{
+            data.forEach {
                 strings.add(it.id)
             }
             adapter?.notifyDataSetChanged()

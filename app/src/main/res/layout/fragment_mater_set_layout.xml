@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_80"
+        android:layout_marginTop="@dimen/dp_40"
         android:drawableLeft="@drawable/icon_depot"
         android:drawablePadding="@dimen/dp_10"
         android:gravity="center"
@@ -55,11 +55,13 @@
 
     <TextView
         android:id="@+id/tv_old_number"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_40"
+        android:layout_marginStart="@dimen/dp_20"
         android:textColor="@color/black_243"
         android:textSize="@dimen/sp_18"
+        android:layout_marginEnd="@dimen/dp_20"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/tip2"
         app:layout_constraintStart_toEndOf="@id/tip2"
         app:layout_constraintTop_toTopOf="@id/tip2" />
@@ -79,15 +81,44 @@
 
     <TextView
         android:id="@+id/tv_old_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_40"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_20"
         android:textColor="@color/black_243"
+        android:layout_marginEnd="@dimen/dp_20"
         android:textSize="@dimen/sp_18"
         app:layout_constraintBottom_toBottomOf="@id/tip3"
         app:layout_constraintStart_toEndOf="@id/tip3"
         app:layout_constraintTop_toTopOf="@id/tip3" />
 
+
+
+    <TextView
+        android:id="@+id/tip33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:drawableLeft="@drawable/icon_number_2"
+        android:drawablePadding="@dimen/dp_10"
+        android:gravity="center"
+        android:text="原物料批号："
+        android:visibility="gone"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintStart_toStartOf="@id/tip3"
+        app:layout_constraintTop_toBottomOf="@id/tip3" />
+
+    <TextView
+        android:id="@+id/tv_old_pihao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_40"
+        android:visibility="gone"
+        android:textColor="@color/black_243"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintBottom_toBottomOf="@id/tip33"
+        app:layout_constraintStart_toEndOf="@id/tip33"
+        app:layout_constraintTop_toTopOf="@id/tip33" />
     <TextView
         android:id="@+id/tip4"
         android:layout_width="wrap_content"
@@ -97,19 +128,19 @@
         android:drawablePadding="@dimen/dp_10"
         android:text="新物料条码："
         android:textSize="@dimen/sp_18"
-        app:layout_constraintStart_toStartOf="@id/tip3"
-        app:layout_constraintTop_toBottomOf="@id/tip3" />
+        app:layout_constraintStart_toStartOf="@id/tip33"
+        app:layout_constraintTop_toBottomOf="@id/tip33" />
 
     <EditText
         android:id="@+id/et_new_number"
-        android:layout_width="@dimen/dp_140"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_20"
         android:background="@drawable/bg_et_black_round_4dp"
-        android:maxLines="1"
-        android:padding="@dimen/dp_14"
+        android:padding="@dimen/dp_10"
         android:textSize="@dimen/sp_16"
-        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/tip4"
         app:layout_constraintStart_toEndOf="@id/tip4"
         app:layout_constraintTop_toTopOf="@id/tip4" />
@@ -128,16 +159,44 @@
 
     <EditText
         android:id="@+id/et_new_name"
-        android:layout_width="@dimen/dp_140"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_et_black_round_4dp"
-        android:padding="@dimen/dp_14"
+        android:padding="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_20"
         android:textSize="@dimen/sp_16"
-        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/tip5"
         app:layout_constraintStart_toStartOf="@id/et_new_number"
         app:layout_constraintTop_toTopOf="@id/tip5" />
 
+
+
+    <TextView
+        android:id="@+id/tip6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_40"
+        android:drawableLeft="@drawable/icon_number_3"
+        android:drawablePadding="@dimen/dp_10"
+        android:text="新物料批号："
+        android:visibility="gone"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintStart_toStartOf="@id/tip5"
+        app:layout_constraintTop_toBottomOf="@id/tip5" />
+
+    <EditText
+        android:id="@+id/et_new_pihao"
+        android:layout_width="@dimen/dp_140"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@drawable/bg_et_black_round_4dp"
+        android:padding="@dimen/dp_14"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tip6"
+        app:layout_constraintStart_toStartOf="@id/et_new_name"
+        app:layout_constraintTop_toTopOf="@id/tip6" />
     <Button
         android:id="@+id/bt_bind"
         android:layout_width="match_parent"
@@ -151,6 +210,6 @@
         android:textColor="@color/white"
         android:layout_marginTop="@dimen/dp_80"
         android:textSize="@dimen/sp_24"
-        app:layout_constraintTop_toBottomOf="@id/et_new_name" />
+        app:layout_constraintTop_toBottomOf="@id/et_new_pihao" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

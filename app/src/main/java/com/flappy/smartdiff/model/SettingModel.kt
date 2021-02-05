@@ -29,7 +29,7 @@ class SettingModel:SettingContract.ISettingModel {
         val materials = mutableListOf<MaterialBean>()
         for (i in start..start+depotBean.count-1){
             val id = if(i<10) "0"+i else i.toString()
-            val bean = MaterialBean(pre+id,"","")
+            val bean = MaterialBean(pre+id,"","","")
             materials.add(bean)
         }
         dao.insertAllMaterials(materials)

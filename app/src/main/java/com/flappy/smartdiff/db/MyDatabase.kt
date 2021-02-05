@@ -10,7 +10,7 @@ import com.flappy.smartdiff.bean.User
 import com.flappy.smartdiff.dao.DepotDao
 import com.flappy.smartdiff.dao.UserDao
 
-@Database(entities = arrayOf(User::class, DepotBean::class,MaterialBean::class), version = 1)
+@Database(entities = arrayOf(User::class, DepotBean::class,MaterialBean::class), version = 2)
 abstract class MyDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun depotDao():DepotDao
@@ -23,6 +23,7 @@ abstract class MyDatabase : RoomDatabase() {
         MyDatabase::class.java,
         "diff")
             .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
             .build()
     }
 }

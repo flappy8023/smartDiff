@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_20"
         android:drawableLeft="@drawable/icon_name_1"
         android:drawablePadding="@dimen/dp_10"
         android:text="料仓命名规则："
@@ -38,13 +38,13 @@
         android:id="@+id/tip2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_20"
         android:drawableLeft="@drawable/icon_count"
         android:drawablePadding="@dimen/dp_10"
         android:text="料仓数量："
         android:textSize="@dimen/sp_18"
         app:layout_constraintStart_toStartOf="@id/tip1"
-        app:layout_constraintTop_toBottomOf="@id/tip1" />
+        app:layout_constraintTop_toBottomOf="@id/et_name" />
 
     <EditText
         android:id="@+id/et_count"
@@ -62,13 +62,13 @@
         android:id="@+id/tip3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_20"
         android:drawableLeft="@drawable/icon_location"
         android:drawablePadding="@dimen/dp_10"
         android:text="控制器IP："
         android:textSize="@dimen/sp_18"
         app:layout_constraintStart_toStartOf="@id/tip2"
-        app:layout_constraintTop_toBottomOf="@id/tip2" />
+        app:layout_constraintTop_toBottomOf="@id/et_count" />
 
     <EditText
         android:id="@+id/et_position"
@@ -80,6 +80,132 @@
         app:layout_constraintBottom_toBottomOf="@id/tip3"
         app:layout_constraintStart_toStartOf="@id/et_name"
         app:layout_constraintTop_toTopOf="@id/tip3" />
+    <TextView
+        android:id="@+id/tip33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:drawableLeft="@drawable/icon_location"
+        android:drawablePadding="@dimen/dp_10"
+        android:text="批号回传IP："
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintStart_toStartOf="@id/tip2"
+        app:layout_constraintTop_toBottomOf="@id/et_position" />
+
+    <EditText
+        android:id="@+id/et_pihao_position"
+        android:layout_width="@dimen/dp_140"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_et_black_round_4dp"
+        android:padding="@dimen/dp_10"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBottom_toBottomOf="@id/tip33"
+        app:layout_constraintStart_toStartOf="@id/et_name"
+        app:layout_constraintTop_toTopOf="@id/tip33" />
+
+    <TextView
+        android:id="@+id/tip4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="物料号码起止:"
+        android:textSize="@dimen/sp_18"
+        android:drawablePadding="@dimen/dp_10"
+        android:drawableLeft="@drawable/icon_number_3"
+        app:layout_constraintStart_toStartOf="@id/tip33"
+        app:layout_constraintTop_toBottomOf="@id/et_pihao_position" />
+
+    <EditText
+        android:id="@+id/et_number_start"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:background="@drawable/bg_et_black_round_4dp"
+        android:padding="@dimen/dp_6"
+        android:text="1"
+        android:textSize="@dimen/sp_16"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/tip4"
+        app:layout_constraintStart_toEndOf="@id/tip4"
+        app:layout_constraintTop_toTopOf="@id/tip4" />
+
+    <TextView
+        android:id="@+id/tv_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_marginStart="@dimen/dp_20"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintBottom_toBottomOf="@id/tip4"
+        app:layout_constraintStart_toEndOf="@id/et_number_start"
+        app:layout_constraintTop_toTopOf="@id/tip4" />
+
+    <EditText
+        android:id="@+id/et_number_end"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_et_black_round_4dp"
+        android:padding="@dimen/dp_6"
+        android:text="14"
+        android:gravity="center"
+        android:inputType="number"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginStart="@dimen/dp_20"
+        app:layout_constraintBottom_toBottomOf="@id/tip4"
+        app:layout_constraintStart_toEndOf="@id/tv_line"
+        app:layout_constraintTop_toTopOf="@id/tip4" />
+    <TextView
+        android:id="@+id/tip5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="批号起止:"
+        android:textSize="@dimen/sp_18"
+        android:drawablePadding="@dimen/dp_10"
+        android:drawableLeft="@drawable/icon_number_3"
+        app:layout_constraintStart_toStartOf="@id/tip4"
+        app:layout_constraintTop_toBottomOf="@id/et_number_start" />
+
+    <EditText
+        android:id="@+id/et_pihao_start"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_et_black_round_4dp"
+        android:padding="@dimen/dp_6"
+        android:text="21"
+        android:gravity="center"
+        android:textSize="@dimen/sp_16"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/tip5"
+        app:layout_constraintStart_toStartOf="@id/et_number_start"
+        app:layout_constraintTop_toTopOf="@id/tip5" />
+
+    <TextView
+        android:id="@+id/tv_line1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_marginStart="@dimen/dp_20"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintBottom_toBottomOf="@id/tip5"
+        app:layout_constraintStart_toEndOf="@id/et_pihao_start"
+        app:layout_constraintTop_toTopOf="@id/tip5" />
+
+    <EditText
+        android:id="@+id/et_pihao_end"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:background="@drawable/bg_et_black_round_4dp"
+        android:padding="@dimen/dp_6"
+        android:text="26"
+        android:textSize="@dimen/sp_16"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/tip5"
+        app:layout_constraintStart_toEndOf="@id/tv_line1"
+        app:layout_constraintTop_toTopOf="@id/tip5" />
 
     <Button
         android:id="@+id/bt_save"
@@ -94,8 +220,8 @@
         android:textColor="@color/white"
         android:textSize="@dimen/sp_20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tip3"
-        app:layout_constraintTop_toBottomOf="@id/et_position" />
+        app:layout_constraintStart_toStartOf="@id/tip5"
+        app:layout_constraintTop_toBottomOf="@id/et_pihao_end" />
 
     <View
         android:id="@+id/line"
@@ -138,8 +264,8 @@
         android:id="@+id/ll_quit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_20"
         app:layout_constraintStart_toStartOf="@id/ll_account"
         app:layout_constraintTop_toBottomOf="@id/ll_account">
 
@@ -147,8 +273,8 @@
         <TextView
             android:id="@+id/tv_quit"
             android:layout_width="wrap_content"
-            android:layout_marginStart="@dimen/dp_20"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
             android:drawableLeft="@drawable/icon_logout"
             android:drawableRight="@drawable/arrow_right"
             android:drawablePadding="@dimen/dp_10"

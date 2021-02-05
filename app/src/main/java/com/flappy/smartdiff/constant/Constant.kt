@@ -14,4 +14,9 @@ object Constant {
     const val KEY_USERNAME = "username"
     const val KEY_PWD = "pwd"
     const val KEY_TCP_IP = "TCP_IP"
+    const val KEY_PIHAO_IP = "pihao_IP"
+    const val KEY_NUMBER_START = "number_start"
+    const val KEY_NUMBER_END = "number_end"
+    const val KEY_PIHAO_START = "pihao_start"
+    const val KEY_PIHAO_END = "pihao_end"
 }

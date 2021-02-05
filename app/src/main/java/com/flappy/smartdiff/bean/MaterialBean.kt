@@ -11,6 +11,6 @@ import androidx.room.PrimaryKey
  * @Version: 1.0
  */
 @Entity(tableName = "material")
-data class MaterialBean(var id:String,var number:String,var name:String) {
+data class MaterialBean(var id:String,var number:String,var name:String,var pihao:String) {
     @PrimaryKey(autoGenerate = true) var uid:Int = 0
 }

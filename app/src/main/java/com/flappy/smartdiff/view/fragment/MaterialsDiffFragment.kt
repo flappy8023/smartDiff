@@ -1,5 +1,6 @@
 package com.flappy.smartdiff.view.fragment
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -95,7 +96,9 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
     }
 
     override fun openSucc() {
+
         activity?.runOnUiThread {
+            mPresenter.sendPihao(curPosition,materials.get(curPosition).pihao)
             if (dialog == null)
                 dialog = AlertDialog.Builder(activity).setTitle("提示").setMessage("开启成功")
                     .setIcon(R.drawable.done).create()
@@ -104,6 +107,10 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
                 dialog?.dismiss()
             }, 1000)
         }
+    }
+
+    override fun getMyContext(): Context? {
+        return context
     }
 
     private var dialog: AlertDialog? = null
@@ -128,7 +135,6 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
             adapter?.notifyDataSetChanged()
         }
     }
-
     override fun onDestroy() {
         super.onDestroy()
         EventBus.getDefault().unregister(this)
