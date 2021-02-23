@@ -7,13 +7,12 @@ import com.flappy.smartdiff.bean.MaterialBean
 import com.flappy.smartdiff.constant.Constant
 import com.flappy.smartdiff.contract.DiffContract
 import com.flappy.smartdiff.model.DiffModel
-import com.flappy.smartdiff.util.tcp.ByteUtils
 import com.flappy.smartdiff.util.tcp.PacketBuffer
 import com.flappy.smartdiff.util.tcp.bean.ServerModel
+import com.flappy.smartdiff.util.tcp.listener.OnSessionListener
 import com.flappy.smartdiff.util.tcp.sdk.DataServiceManager
 import java.text.SimpleDateFormat
 import java.util.*
-import com.flappy.smartdiff.util.tcp.listener.OnSessionListener as OnSessionListener
 
 /**
  * @FileName: DiffPresenter
@@ -201,7 +200,7 @@ class DiffPresenter : DiffContract.IDiffPresenter,
             }else{
                 mView?.showToast("批号回传失败")
             }
-
+            DataServiceManager.getInstance().stop(mView?.getMyContext());
 
         })
         DataServiceManager.getInstance().setOnSessionListener(object : OnSessionListener {

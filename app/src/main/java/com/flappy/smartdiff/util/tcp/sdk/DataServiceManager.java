@@ -139,7 +139,7 @@ public class DataServiceManager {
                     //只一句至关重要，对于android5.0以上，所以minSdkVersion最好小于21；
                     intent.setPackage(context.getPackageName());
                 }
-                String serviceDemonName = "com.yueme.itv.action.DataService";
+                String serviceDemonName = "com.flappy.smartdiff.action.DataService";
                 intent.setAction(serviceDemonName);
                 mIsBound = context.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
                 if (!mIsBound) {

@@ -72,11 +72,15 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
             }
 
         }
+        binding.etNumber.setOnClickListener {
+            binding.etNumber.selectAll()
+        }
         binding.btCompare.setOnClickListener {
             if (binding.etNumber.text.isEmpty()) {
                 activity?.toast("请输入号码")
                 return@setOnClickListener
             }
+            binding.etNumber.selectAll()
             if (materials.size > curPosition) {
                 if (materials.get(curPosition).number.equals(binding.etNumber.text.toString())) {
                     mPresenter.openLock(curPosition)

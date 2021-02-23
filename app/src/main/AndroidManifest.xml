@@ -20,6 +20,13 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <service android:name=".util.tcp.sdk.DataService"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.flappy.smartdiff.action.DataService"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
