@@ -118,9 +118,9 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
         activity?.runOnUiThread {
             var number = binding.etNumber.text.toString()
             var pihao = number
-            if(pihaoStart<=number.length&&numberEnd<=number.length){
-                if(pihaoStart!=0&&pihaoEnd!=0){
-                    pihao.substring(pihaoStart-1,pihaoEnd)
+            if (pihaoStart <= number.length && pihaoEnd <= number.length) {
+                if (pihaoStart != 0 && pihaoEnd != 0) {
+                    pihao = pihao.substring(pihaoStart - 1, pihaoEnd)
                 }
             }
             mPresenter.sendPihao(curPosition, pihao)
