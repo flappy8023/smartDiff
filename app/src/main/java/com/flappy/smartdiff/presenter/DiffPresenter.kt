@@ -13,6 +13,7 @@ import com.flappy.smartdiff.util.tcp.listener.OnSessionListener
 import com.flappy.smartdiff.util.tcp.sdk.DataServiceManager
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.concurrent.timerTask
 
 /**
  * @FileName: DiffPresenter
@@ -189,10 +190,16 @@ class DiffPresenter : DiffContract.IDiffPresenter,
 
         }).start()
     }
+
     override fun sendPihao(index: Int, pihao: String) {
+        val timer = Timer()
+        timer.schedule(timerTask {
+            mView?.showToast("批号回传失败")
+        },10000)
         var serverModel = ServerModel(pihao_IP, 500)
         DataServiceManager.getInstance().setServerModel(serverModel)
         DataServiceManager.getInstance().addObserver(fun(ip: String, data: ByteArray) {
+            timer.cancel()
             //去除首位标志位
             var result= String(data.copyOfRange(1,data.size-1))
             if(result.length>=3&&result.get(result.length-3)=='0'){

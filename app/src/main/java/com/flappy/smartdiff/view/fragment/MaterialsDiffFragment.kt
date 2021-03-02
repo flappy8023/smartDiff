@@ -10,9 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.flappy.smartdiff.Preference
 import com.flappy.smartdiff.R
 import com.flappy.smartdiff.base.BaseFragment
 import com.flappy.smartdiff.bean.MaterialBean
+import com.flappy.smartdiff.constant.Constant
 import com.flappy.smartdiff.contract.DiffContract
 import com.flappy.smartdiff.databinding.FragmentDiffBinding
 import com.flappy.smartdiff.presenter.DiffPresenter
@@ -32,6 +34,8 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
     val data = mutableListOf<String>()
     var materials = mutableListOf<MaterialBean>()
     var adapter: ArrayAdapter<String>? = null
+    private var numberStart by Preference(Constant.KEY_NUMBER_START, 1)
+    private var numberEnd by Preference(Constant.KEY_NUMBER_END, 14)
     var curPosition = 0
     override fun initView() {
         EventBus.getDefault().register(this)
@@ -80,9 +84,17 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
                 activity?.toast("请输入号码")
                 return@setOnClickListener
             }
+            var number = binding.etNumber.text.toString()
+            var realNumber = number
+            if (numberStart <= number.length && numberEnd <= number.length) {
+                if (0 != numberEnd && 0 != numberEnd) {
+                    realNumber = number.substring(numberStart - 1, numberEnd)
+                }
+            }
+
             binding.etNumber.selectAll()
             if (materials.size > curPosition) {
-                if (materials.get(curPosition).number.equals(binding.etNumber.text.toString())) {
+                if (materials.get(curPosition).number.startsWith(realNumber)) {
                     mPresenter.openLock(curPosition)
 
                 } else {
@@ -102,7 +114,7 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
     override fun openSucc() {
 
         activity?.runOnUiThread {
-            mPresenter.sendPihao(curPosition,materials.get(curPosition).pihao)
+            mPresenter.sendPihao(curPosition, materials.get(curPosition).pihao)
             if (dialog == null)
                 dialog = AlertDialog.Builder(activity).setTitle("提示").setMessage("开启成功")
                     .setIcon(R.drawable.done).create()
@@ -139,6 +151,7 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
             adapter?.notifyDataSetChanged()
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         EventBus.getDefault().unregister(this)
