@@ -36,6 +36,8 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
     var adapter: ArrayAdapter<String>? = null
     private var numberStart by Preference(Constant.KEY_NUMBER_START, 1)
     private var numberEnd by Preference(Constant.KEY_NUMBER_END, 14)
+    private var pihaoStart by Preference(Constant.KEY_PIHAO_START, 21)
+    private var pihaoEnd by Preference(Constant.KEY_PIHAO_END, 26)
     var curPosition = 0
     override fun initView() {
         EventBus.getDefault().register(this)
@@ -114,7 +116,14 @@ class MaterialsDiffFragment : BaseFragment<DiffPresenter>(), DiffContract.IDiffV
     override fun openSucc() {
 
         activity?.runOnUiThread {
-            mPresenter.sendPihao(curPosition, materials.get(curPosition).pihao)
+            var number = binding.etNumber.text.toString()
+            var pihao = number
+            if(pihaoStart<=number.length&&numberEnd<=number.length){
+                if(pihaoStart!=0&&pihaoEnd!=0){
+                    pihao.substring(pihaoStart-1,pihaoEnd)
+                }
+            }
+            mPresenter.sendPihao(curPosition, pihao)
             if (dialog == null)
                 dialog = AlertDialog.Builder(activity).setTitle("提示").setMessage("开启成功")
                     .setIcon(R.drawable.done).create()
